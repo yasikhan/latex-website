@@ -15,25 +15,10 @@ body.latex-dark { --nav-border: rgba(255, 255, 255, 0.22); }
    contexts (nav, pub-link chips, summaries) opt out of the underline below. */
 a, a:link, a:visited { color: var(--body-color); text-decoration: underline; }
 
-/* ---------- Skip link (a11y) — off-screen until focused ---------- */
-.skip-link {
-  position: absolute;
-  left: -9999px;
-  top: 0;
-  z-index: 100;
-  padding: 0.5rem 0.9rem;
-  background: var(--body-bg-color, #fff);
-  color: var(--body-color);
-  border: 1px solid var(--body-color);
-  text-decoration: none;
-}
-.skip-link:focus { left: 0.5rem; top: 0.5rem; }
-
 /* Visible keyboard focus, theme-aware */
 a:focus-visible,
 .site-nav .nav-links a:focus-visible,
-.theme-toggle:focus-visible,
-.skip-link:focus {
+.theme-toggle:focus-visible {
   outline: 2px solid var(--body-color);
   outline-offset: 2px;
 }
@@ -234,7 +219,7 @@ main.numbered-pubs { counter-reset: pub; }
 
 /* ---------- Print (clean CV / posts as a document) ---------- */
 @media print {
-  .site-nav, .theme-toggle, .skip-link, footer { display: none !important; }
+  .site-nav, .theme-toggle, footer { display: none !important; }
   body { color: #000; background: #fff; }
   a, a:link, a:visited { color: #000; }
   body > header { border-bottom-color: #000; }
