@@ -10,10 +10,12 @@
 body { --nav-border: rgba(0, 0, 0, 0.15); }
 body.latex-dark { --nav-border: rgba(255, 255, 255, 0.22); }
 
-/* Links: near-black + underline — the "typeset document" look (no web-blue).
-   Distinguished from body text by the underline, not by color. Specific
-   contexts (nav, pub-link chips, summaries) opt out of the underline below. */
-a, a:link, a:visited { color: var(--body-color); text-decoration: underline; }
+/* Links: blue + underline. Theme-aware — a deeper blue in light mode, a lighter
+   blue in dark mode for contrast. Specific contexts (nav, pub-link chips,
+   summaries) opt out of the underline below. */
+a, a:link, a:visited { color: var(--link-blue); text-decoration: underline; }
+body { --link-blue: #0645ad; }
+body.latex-dark { --link-blue: #6ea8fe; }
 
 /* Visible keyboard focus, theme-aware */
 a:focus-visible,
