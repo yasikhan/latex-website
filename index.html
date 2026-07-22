@@ -6,6 +6,14 @@
   <title>Ada Lovelace — Home</title>
   <meta name="description" content="Personal academic website of Ada Lovelace." />
 
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml" />
+
+  <!-- Social preview (edit for your site) -->
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Ada Lovelace — Home" />
+  <meta property="og:description" content="Personal academic website of Ada Lovelace." />
+  <meta name="twitter:card" content="summary" />
+
   <!-- LaTeX look (vendored, self-contained) then our overrides -->
   <link rel="stylesheet" href="styles/latex.min.css" />
   <link rel="stylesheet" href="styles/custom.css" />
@@ -24,6 +32,8 @@
 <body>
   <!-- Apply saved theme before paint to avoid a light-mode flash -->
   <script>try { if (localStorage.getItem("theme") === "dark") document.body.classList.add("latex-dark"); } catch (e) {}</script>
+
+  <a class="skip-link" href="#main">Skip to content</a>
 
   <!-- ===== Shared nav (copy this block into every page; update aria-current) ===== -->
   <nav class="site-nav">
@@ -51,7 +61,7 @@
     </p>
   </header>
 
-  <main>
+  <main id="main" class="numbered-sections">
     <section class="intro">
       <img class="profile" src="assets/profile.svg" alt="Portrait of Ada Lovelace" />
       <div class="intro-body">

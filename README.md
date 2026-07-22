@@ -31,6 +31,7 @@ step, no framework, no dependencies to install. Edit a file, refresh the browser
 │   └── theme.js          # Dark-mode toggle
 ├── assets/
 │   ├── profile.svg       # Placeholder headshot — replace with your photo
+│   ├── favicon.svg       # Browser-tab icon (a ∑ monogram) — swap for your own
 │   └── cv.pdf            # (add your own) target of the "Download PDF" link
 ├── README.md
 └── LICENSE
@@ -59,6 +60,11 @@ python3 -m http.server 8000
    `blog.html`. That sample post also documents how to use math, theorems, sidenotes, and footnotes.
 6. **Colors / spacing** — tweak `styles/custom.css`. Leave `styles/latex.min.css` alone (it's the
    upstream library).
+7. **Section numbering** — pages number their `<h2>`/`<h3>` like a paper when their `<main>`
+   carries `class="numbered-sections"` (Home, CV, posts do; Publications and Blog don't). Add or
+   drop the class to toggle it. The publications reference counter lives on `main.numbered-pubs`.
+8. **Favicon & link previews** — replace `assets/favicon.svg` and edit the Open Graph `<meta>`
+   tags in each page's `<head>` for your name and URLs.
 
 ### Adding a new page
 

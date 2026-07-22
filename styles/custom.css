@@ -10,11 +10,57 @@
 body { --nav-border: rgba(0, 0, 0, 0.15); }
 body.latex-dark { --nav-border: rgba(255, 255, 255, 0.22); }
 
-/* Standard link blue (lighter in dark mode). latex.css defaults links to near-black. */
-body { --link-color: #0066cc; }
-body.latex-dark { --link-color: #6cb6ff; }
-a, a:link, a:visited { color: var(--link-color); }
-/* Nav links stay body-colored (set later); pub-link chips too. */
+/* Links: near-black + underline — the "typeset document" look (no web-blue).
+   Distinguished from body text by the underline, not by color. Specific
+   contexts (nav, pub-link chips, summaries) opt out of the underline below. */
+a, a:link, a:visited { color: var(--body-color); text-decoration: underline; }
+
+/* ---------- Skip link (a11y) — off-screen until focused ---------- */
+.skip-link {
+  position: absolute;
+  left: -9999px;
+  top: 0;
+  z-index: 100;
+  padding: 0.5rem 0.9rem;
+  background: var(--body-bg-color, #fff);
+  color: var(--body-color);
+  border: 1px solid var(--body-color);
+  text-decoration: none;
+}
+.skip-link:focus { left: 0.5rem; top: 0.5rem; }
+
+/* Visible keyboard focus, theme-aware */
+a:focus-visible,
+.site-nav .nav-links a:focus-visible,
+.theme-toggle:focus-visible,
+.skip-link:focus {
+  outline: 2px solid var(--body-color);
+  outline-offset: 2px;
+}
+
+/* ---------- Title block — \maketitle style ---------- */
+body > header {
+  text-align: center;
+  margin-bottom: 2.2rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid var(--nav-border);
+}
+body > header h1 { margin-bottom: 0.4rem; }
+body > header .author { margin-top: 0; }
+
+/* ---------- Section numbering (opt-in via .numbered-sections) ---------- */
+main.numbered-sections { counter-reset: h2counter; }
+main.numbered-sections h2 { counter-reset: h3counter; }
+main.numbered-sections h2::before {
+  counter-increment: h2counter;
+  content: counter(h2counter) "\00a0\00a0";
+}
+main.numbered-sections h3::before {
+  counter-increment: h3counter;
+  content: counter(h2counter) "." counter(h3counter) "\00a0\00a0";
+}
+/* An abstract is never numbered, even inside a numbered post */
+main.numbered-sections .abstract h2::before { content: none; counter-increment: none; }
 
 /* ---------- Running-header nav ---------- */
 .site-nav {
@@ -42,7 +88,7 @@ a, a:link, a:visited { color: var(--link-color); }
 
 .site-nav .nav-links a {
   text-decoration: none;
-  color: var(--link-color);
+  color: var(--body-color);
 }
 .site-nav .nav-links a:hover { text-decoration: underline; }
 
@@ -110,7 +156,10 @@ a, a:link, a:visited { color: var(--link-color); }
 }
 
 /* ---------- Publications ---------- */
-.pub-list { list-style: none; padding-left: 0; counter-reset: pub; }
+/* Reset the reference counter once on the page container so [n] runs continuously
+   across the year sections (each <ol> resetting it would restart at [1]). */
+main.numbered-pubs { counter-reset: pub; }
+.pub-list { list-style: none; padding-left: 0; }
 .pub-list > li {
   position: relative;
   padding-left: 2.2rem;
@@ -181,4 +230,17 @@ a, a:link, a:visited { color: var(--link-color); }
   .cv-entry { grid-template-columns: 1fr; gap: 0; }
   .cv-entry .cv-date { opacity: 0.6; margin-bottom: 0.2rem; }
   .news-list li { flex-direction: column; gap: 0; }
+}
+
+/* ---------- Print (clean CV / posts as a document) ---------- */
+@media print {
+  .site-nav, .theme-toggle, .skip-link, footer { display: none !important; }
+  body { color: #000; background: #fff; }
+  a, a:link, a:visited { color: #000; }
+  body > header { border-bottom-color: #000; }
+  /* keep logical units together across page breaks */
+  .cv-entry, .pub-list > li, .theorem, .proof, .abstract, .news-list li {
+    break-inside: avoid;
+  }
+  .pub-list details { display: none; }  /* drop BibTeX blocks in print */
 }

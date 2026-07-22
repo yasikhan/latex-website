@@ -6,12 +6,22 @@
   <title>Ada Lovelace — Blog</title>
   <meta name="description" content="Notes and blog posts by Ada Lovelace." />
 
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml" />
+
+  <!-- Social preview (edit for your site) -->
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Ada Lovelace — Blog" />
+  <meta property="og:description" content="Notes and blog posts by Ada Lovelace." />
+  <meta name="twitter:card" content="summary" />
+
   <link rel="stylesheet" href="styles/latex.min.css" />
   <link rel="stylesheet" href="styles/custom.css" />
 </head>
 
 <body>
   <script>try { if (localStorage.getItem("theme") === "dark") document.body.classList.add("latex-dark"); } catch (e) {}</script>
+
+  <a class="skip-link" href="#main">Skip to content</a>
 
   <nav class="site-nav">
     <ul class="nav-links">
@@ -28,7 +38,7 @@
     <p class="author">Ada Lovelace</p>
   </header>
 
-  <main>
+  <main id="main">
     <p>
       Occasional notes on research, mathematics, and computing. To add a post,
       copy <code>posts/example-post.html</code> and add a line to the list below.

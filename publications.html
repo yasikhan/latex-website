@@ -6,6 +6,14 @@
   <title>Ada Lovelace — Publications</title>
   <meta name="description" content="Publications by Ada Lovelace." />
 
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml" />
+
+  <!-- Social preview (edit for your site) -->
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Ada Lovelace — Publications" />
+  <meta property="og:description" content="Publications by Ada Lovelace." />
+  <meta name="twitter:card" content="summary" />
+
   <link rel="stylesheet" href="styles/latex.min.css" />
   <link rel="stylesheet" href="styles/custom.css" />
 
@@ -22,6 +30,8 @@
 <body>
   <script>try { if (localStorage.getItem("theme") === "dark") document.body.classList.add("latex-dark"); } catch (e) {}</script>
 
+  <a class="skip-link" href="#main">Skip to content</a>
+
   <nav class="site-nav">
     <ul class="nav-links">
       <li><a href="index.html">Home</a></li>
@@ -37,7 +47,7 @@
     <p class="author">Ada Lovelace</p>
   </header>
 
-  <main>
+  <main id="main" class="numbered-pubs">
     <p>
       A selected list of publications. Your name is <span style="text-decoration: underline;">underlined</span>.
       See also my <a href="https://scholar.google.com/">Google Scholar</a> profile.
@@ -68,7 +78,7 @@
     </ol>
 
     <h2>2025</h2>
-    <ol class="pub-list" start="2">
+    <ol class="pub-list">
       <li>
         <span class="pub-title">On the Computation of Bernoulli Numbers by Machine</span><br />
         <span class="pub-authors"><span class="me">A. Lovelace</span><sup>*</sup>, L. Menabrea<sup>*</sup></span><br />
@@ -92,7 +102,7 @@
     </ol>
 
     <h2>Preprints</h2>
-    <ol class="pub-list" start="3">
+    <ol class="pub-list">
       <li>
         <span class="pub-title">A General Theory of Programmable Operations</span><br />
         <span class="pub-authors"><span class="me">A. Lovelace</span></span><br />
