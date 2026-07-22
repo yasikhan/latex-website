@@ -1,0 +1,184 @@
+/*
+ * custom.css — site-specific styling on top of latex.css
+ * latex.css does the heavy lifting (typography, LaTeX look, dark mode via .latex-dark).
+ * This file only adds the bits latex.css doesn't ship: the running-header nav, a
+ * theme-toggle button, and layout for the publications and CV lists.
+ */
+
+/* Theme-aware border color (latex.css doesn't expose a generic --border-color).
+   Overridden below for dark mode so nav/button borders adapt. */
+body { --nav-border: rgba(0, 0, 0, 0.15); }
+body.latex-dark { --nav-border: rgba(255, 255, 255, 0.22); }
+
+/* Standard link blue (lighter in dark mode). latex.css defaults links to near-black. */
+body { --link-color: #0066cc; }
+body.latex-dark { --link-color: #6cb6ff; }
+a, a:link, a:visited { color: var(--link-color); }
+/* Nav links stay body-colored (set later); pub-link chips too. */
+
+/* ---------- Running-header nav ---------- */
+.site-nav {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 1rem;
+  flex-wrap: wrap;
+  margin-bottom: 2.5rem;
+  padding-bottom: 0.6rem;
+  border-bottom: 1px solid var(--nav-border);
+  font-size: 0.95rem;
+}
+
+.site-nav .nav-links {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem 0.9rem;
+}
+
+.site-nav .nav-links li { margin: 0; }
+
+.site-nav .nav-links a {
+  text-decoration: none;
+  color: var(--link-color);
+}
+.site-nav .nav-links a:hover { text-decoration: underline; }
+
+/* Current page: neutral + bold so "you are here" stands out against the blue links */
+.site-nav .nav-links a[aria-current="page"] {
+  color: var(--body-color);
+  font-weight: bold;
+  text-decoration: underline;
+}
+
+/* ---------- Theme toggle button ---------- */
+.theme-toggle {
+  font: inherit;
+  font-size: 0.9rem;
+  cursor: pointer;
+  background: none;
+  border: 1px solid var(--nav-border);
+  border-radius: 4px;
+  padding: 0.15rem 0.6rem;
+  color: var(--body-color);
+  line-height: 1.4;
+  white-space: nowrap;
+}
+.theme-toggle:hover { border-color: var(--body-color); }
+
+/* ---------- Home / About ---------- */
+.intro {
+  display: flex;
+  align-items: center;
+  gap: 1.9rem;
+  margin: 1.5rem 0 2rem;
+}
+.profile { order: 2; }        /* photo on the right */
+.intro-body { flex: 1 1 0; min-width: 0; }
+.intro-body p { margin-top: 0; }
+.intro-body p:last-child { margin-bottom: 0; }
+
+.profile {
+  flex: 0 0 auto;
+  width: 160px;
+  height: auto;
+  border-radius: 6px;
+  margin: 0;
+}
+
+.contact-links {
+  text-align: center;
+  margin-top: 0.6rem;
+  font-size: 0.95rem;
+}
+.contact-links a { margin: 0 0.3rem; }
+
+/* A simple News/updates list */
+.news-list { list-style: none; padding-left: 0; }
+.news-list li {
+  display: flex;
+  gap: 0.9rem;
+  margin-bottom: 0.5rem;
+}
+.news-list .news-date {
+  flex: 0 0 5.5rem;
+  font-variant-numeric: tabular-nums;
+  color: var(--body-color);
+  opacity: 0.7;
+}
+
+/* ---------- Publications ---------- */
+.pub-list { list-style: none; padding-left: 0; counter-reset: pub; }
+.pub-list > li {
+  position: relative;
+  padding-left: 2.2rem;
+  margin-bottom: 1.4rem;
+}
+.pub-list > li::before {
+  counter-increment: pub;
+  content: "[" counter(pub) "]";
+  position: absolute;
+  left: 0;
+  font-variant-numeric: tabular-nums;
+}
+.pub-title { font-weight: bold; }
+.pub-authors { }
+.pub-authors .me { text-decoration: underline; }
+.pub-venue { font-style: italic; }
+
+.pub-links { margin-top: 0.15rem; font-size: 0.9rem; }
+.pub-links a {
+  display: inline-block;
+  margin-right: 0.4rem;
+  text-decoration: none;
+  border: 1px solid var(--nav-border);
+  border-radius: 3px;
+  padding: 0 0.4rem;
+}
+.pub-links a:hover { border-color: var(--body-color); text-decoration: none; }
+
+.pub-list details { margin-top: 0.4rem; }
+.pub-list summary { cursor: pointer; font-size: 0.9rem; }
+.pub-list pre { margin-top: 0.4rem; }
+
+/* ---------- CV ---------- */
+.cv-section { margin-bottom: 2rem; }
+.cv-entry {
+  display: grid;
+  grid-template-columns: 8rem 1fr;
+  gap: 0.2rem 1rem;
+  margin-bottom: 1rem;
+}
+.cv-entry .cv-date {
+  font-variant-numeric: tabular-nums;
+  opacity: 0.75;
+}
+.cv-entry .cv-detail { margin: 0; }
+.cv-entry .cv-detail .cv-role { font-weight: bold; }
+.cv-entry .cv-detail .cv-place { font-style: italic; }
+
+/* ---------- Blog index ---------- */
+.post-list { list-style: none; padding-left: 0; }
+.post-list li {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 0.7rem;
+  align-items: baseline;
+}
+.post-list .post-date {
+  flex: 0 0 6.5rem;
+  font-variant-numeric: tabular-nums;
+  opacity: 0.7;
+}
+
+/* ---------- Responsive ---------- */
+@media (max-width: 600px) {
+  .intro { flex-direction: column; align-items: center; text-align: center; gap: 1.2rem; }
+  .intro-body { text-align: left; }
+  .profile { width: 150px; order: -1; }   /* photo back on top when stacked */
+  .cv-entry { grid-template-columns: 1fr; gap: 0; }
+  .cv-entry .cv-date { opacity: 0.6; margin-bottom: 0.2rem; }
+  .news-list li { flex-direction: column; gap: 0; }
+}

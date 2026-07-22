@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>On Numbers and Machines — Ada Lovelace</title>
+  <meta name="description" content="A sample post showcasing the LaTeX.css features: math, theorems, sidenotes, and footnotes." />
+
+  <!-- Note the ../ prefix: this file lives in posts/ -->
+  <link rel="stylesheet" href="../styles/latex.min.css" />
+  <link rel="stylesheet" href="../styles/custom.css" />
+
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" />
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"
+          onload="renderMathInElement(document.body, {delimiters: [
+            {left: '$$', right: '$$', display: true},
+            {left: '$', right: '$', display: false},
+            {left: '\\(', right: '\\)', display: false},
+            {left: '\\[', right: '\\]', display: true}]});"></script>
+</head>
+
+<body>
+  <script>try { if (localStorage.getItem("theme") === "dark") document.body.classList.add("latex-dark"); } catch (e) {}</script>
+
+  <nav class="site-nav">
+    <ul class="nav-links">
+      <li><a href="../index.html">Home</a></li>
+      <li><a href="../publications.html">Publications</a></li>
+      <li><a href="../cv.html">CV</a></li>
+      <li><a href="../blog.html" aria-current="page">Blog</a></li>
+    </ul>
+    <button class="theme-toggle" type="button" aria-pressed="false">☾ Dark</button>
+  </nav>
+
+  <header>
+    <h1>On Numbers and Machines</h1>
+    <p class="author">
+      Ada Lovelace<br />
+      15 July 2026
+    </p>
+  </header>
+
+  <main>
+    <div class="abstract">
+      <h2>Abstract</h2>
+      <p>
+        This sample post exists to demonstrate everything the template can do:
+        inline and display mathematics, numbered theorems and proofs, margin
+        sidenotes, and footnotes — all in the style of a typeset LaTeX document.
+      </p>
+    </div>
+
+    <p class="indent-pars text-justify">
+      The Analytical Engine does not occupy common ground with mere calculating
+      machines. It holds a position wholly its own, for it can act upon symbols
+      as readily as upon numbers. Consider a simple relation such as
+      $e^{i\pi} + 1 = 0$, which binds together the most fundamental constants of
+      analysis in a single expression.<label for="sn-1" class="sidenote-toggle sidenote-number"></label>
+      <input type="checkbox" id="sn-1" class="sidenote-toggle" />
+      <span class="sidenote">
+        This identity is often attributed to Euler and is celebrated for uniting
+        $e$, $i$, $\pi$, $1$, and $0$ in one line.
+      </span>
+      Such a relation is not merely computed; it is <em>manipulated</em>.
+    </p>
+
+    <p class="indent-pars text-justify">
+      When a machine is furnished with a rule for generating each term of a
+      series, it may evaluate expressions of considerable depth. A convenient
+      example is the sum of an infinite geometric progression, which converges
+      whenever the common ratio is smaller than unity:
+    </p>
+
+    <p style="text-align: center;">
+      $$\sum_{n=0}^{\infty} ar^{n} = \frac{a}{1 - r}, \qquad |r| < 1.$$
+    </p>
+
+    <p class="indent-pars text-justify">
+      From relations of this kind we may state and prove results with full rigour.
+      The following classical fact requires nothing beyond elementary reasoning.
+    </p>
+
+    <div class="theorem">
+      The real numbers $\mathbb{R}$ are uncountable.
+    </div>
+
+    <div class="proof">
+      Suppose, for contradiction, that $\mathbb{R}$ were countable. Then the
+      interval $[0, 1]$ would be countable as well, and we could enumerate its
+      elements as $x_1, x_2, x_3, \dots$. Construct a number $y \in [0,1]$ whose
+      $n$-th digit differs from the $n$-th digit of $x_n$. Then $y$ differs from
+      every $x_n$, contradicting the assumption that the list was complete.
+      Hence $\mathbb{R}$ cannot be countable.
+    </div>
+
+    <p class="indent-pars text-justify">
+      The engine, then, is not bounded to arithmetic. It is a general instrument
+      for the manipulation of quantity and symbol alike — a distinction whose
+      consequences we are only beginning to appreciate.<a href="#fn1" id="ref1"><sup>1</sup></a>
+    </p>
+
+    <div class="footnotes">
+      <p id="fn1">
+        1. Adapted, in spirit, from the Notes on the Analytical Engine.
+        <a href="#ref1" title="Jump back to footnote 1 in the text.">↩</a>
+      </p>
+    </div>
+
+    <p style="margin-top: 2rem;"><a href="../blog.html">← Back to all posts</a></p>
+  </main>
+
+  <footer>
+    <hr />
+    <p style="font-size: 0.85rem; opacity: 0.7;">
+      designed and coded by <a href="https://github.com/yasikhan">yasmeena khan</a> &copy; 2026.<br />
+      styled with <a href="https://latex.vercel.app/">latex.css</a> (mit license) &middot;
+      math by <a href="https://katex.org/">katex</a> (mit license).
+    </p>
+  </footer>
+
+  <script src="../scripts/theme.js"></script>
+</body>
+</html>
