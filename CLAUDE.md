@@ -68,7 +68,7 @@ loaded from a CDN**, so math specifically requires a network connection.
   like a paper. Applied to Home, CV, and posts; **not** Publications (h2 are years) or Blog
   (no h2). An `.abstract` h2 is explicitly excluded from numbering.
 - `main.numbered-pubs` — resets the publications reference counter (see above).
-- Every page's `<head>` links `assets/favicon.svg` (a ∑ monogram) and carries placeholder
+- Every page's `<head>` links `assets/favicon.svg` (an "HA" monogram) and carries placeholder
   Open Graph / Twitter meta — duplicated per page like the rest of the head; edit per site.
 - Each `<body>` opens with a `.skip-link` (`href="#main"`) and each `<main>` has `id="main"`
   for keyboard/skip-to-content accessibility. A `@media print` block strips nav/footer for
